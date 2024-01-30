@@ -20,7 +20,10 @@
     "Autoblogs",
     "Github Actions"
   ],
-  "author": "amosmachora",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Amos Machora",
   "license": "MIT",
   "devDependencies": {
     "@actions/core": "^1.10.1",
