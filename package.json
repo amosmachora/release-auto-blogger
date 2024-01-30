@@ -6,9 +6,10 @@
   "modules": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "test",
     "build": "tsup",
-    "lint": "tsc"
+    "lint": "tsc",
+    "release": "pnpm run build && changeset publish"
   },
   "repository": {
     "type": "git",
