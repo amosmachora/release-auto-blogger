@@ -1,0 +1,13 @@
+name: "release-auto-blogger"
+description: "A github action to deploy blogs automatically to hashnode"
+inputs:
+  who-to-greet: # id of input
+    description: "Who to greet"
+    required: true
+    default: "World"
+outputs:
+  time: # id of output
+    description: "The time we greeted you"
+runs:
+  using: "node20"
+  main: "index.js"
