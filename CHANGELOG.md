@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.7
+
+### Patch Changes
+
+- 59719f3: added shell to action.yml
+
 ## 0.1.6
 
 ### Patch Changes
