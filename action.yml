@@ -6,14 +6,14 @@ inputs:
     description: "The name of the project for the blog"
     required: true
 
-  hashnodeHost:
+  hashnode-host:
     description: "The hashnode host e.g amosmachora.hashnode.dev"
     required: true
 
   subtitle:
     description: "Subtitle for your blogs"
 
-  coverImageURL:
+  cover-image:
     description: "Subtitle for the blog"
 
 runs:
