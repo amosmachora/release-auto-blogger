@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.8
+
+### Patch Changes
+
+- feea2d1: added shell to action.yml
+
 ## 0.1.7
 
 ### Patch Changes
