@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.6
+
+### Patch Changes
+
+- 803bf9c: install dependencies independently
+
 ## 0.1.5
 
 ### Patch Changes
