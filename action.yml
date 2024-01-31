@@ -35,17 +35,11 @@ runs:
       run: pnpm install --frozen-lockfile
       shell: bash
 
-    - run: pwd
-      shell: bash
-
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-
-    - run: ls -R $GITHUB_WORKSPACE
       shell: bash
 
     - name: Run main script
       run: |
-        cd $GITHUB_WORKSPACE   
+        cd $GITHUB_PATH   
         node dist/index.js
       shell: bash
