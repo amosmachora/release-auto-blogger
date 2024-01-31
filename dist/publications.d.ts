@@ -1,3 +1,3 @@
-declare const createPublication: (title: string, description: string) => Promise<any>;
+declare const getPublicationId: () => Promise<any>;
 
-export { createPublication };
+export { getPublicationId };
