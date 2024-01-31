@@ -18,4 +18,5 @@ inputs:
 
 runs:
   using: "node20"
+  pre: pnpm install --frozen-lockfile
   main: "dist/index.js"
