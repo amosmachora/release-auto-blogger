@@ -1,34 +1,26 @@
 import axios from "axios";
+import { hashnodeHost } from ".";
 
-export const createPublication = async (title: string, description: string) => {
-  const createPublicationMutation = `mutation {
-          createPublication(input: {
-            title: ${title}
-            description: ${description}
-            tags: ["tag1", "tag2"] 
-          }) {
-            publication {
-              _id
-            }
-          }
-        }
-        `;
+const optimisticPublicationQuery = `query {
+  publication(host: "${hashnodeHost}") {
+    id
+    title
+  }
+}`;
 
-  const response = await axios.post(
-    "https://gql.hashnode.com/",
-    {
-      query: createPublicationMutation,
-    },
-    {
-      headers: {
-        Authorization: process.env.HASHNODE_PERSONAL_ACCESS_TOKEN,
-      },
-    }
-  );
+export const getPublicationId = async () => {
+  //checking to see if the user has a publication
+  const response = await axios.post("https://gql.hashnode.com/", {
+    query: optimisticPublicationQuery,
+  });
 
-  if (response.data.errors || response.data.errors.length > 0) {
-    throw new Error(response.data.errors.at(0).message);
+  if (response.data.data.publication.id) {
+    return response.data.data.publication.id;
   }
 
-  return response.data.data;
+  //doesn't have a publication now let`s throw an error and ask the user to create one and retry.
+
+  throw new Error(
+    "You don`t have a publication under that host. Create a hashnode host then rerun workflow"
+  );
 };

@@ -1,10 +1,21 @@
 name: "release-auto-blogger"
 description: "A github action to deploy blogs automatically to hashnode"
-# inputs:
-#   who-to-greet: # id of input
-#     description: "Who to greet"
-#     required: true
-#     default: "World"
+
+inputs:
+  project-name:
+    description: "The name of the project for the blog"
+    required: true
+
+  hashnodeHost:
+    description: "The hashnode host e.g amosmachora.hashnode.dev"
+    required: true
+
+  subtitle:
+    description: "Subtitle for your blogs"
+
+  coverImageURL:
+    description: "Subtitle for the blog"
+
 runs:
   using: "node20"
   main: "dist/index.js"

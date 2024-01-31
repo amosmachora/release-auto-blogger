@@ -1,81 +1,105 @@
-// import axios, { AxiosError } from "axios";
-// import dotenv from "dotenv";
-// import fs from "fs/promises";
-// import { uid } from "uid";
+import axios from "axios";
+import dotenv from "dotenv";
+import fs from "fs/promises";
+import { uid } from "uid";
+import core from "@actions/core";
+import { getPublicationId } from "./publications";
 
-// dotenv.config();
+dotenv.config();
 
-// const getMarkdownContent = async (filePath: string): Promise<string | null> => {
-//   try {
-//     const content = await fs.readFile(filePath, "utf-8");
-//     return content;
-//   } catch (error) {
-//     const err = error as Error;
-//     console.error("Error reading file:", err.message);
+export const projectName = core.getInput("project-name");
+export const hashnodeHost = core.getInput("hashnode-host");
 
-//     return null;
-//     // throw error;
-//   }
-// };
+const subtitle = core.getInput("subtitle");
+const coverImageURL = core.getInput("cover-image");
 
-// const createPostMutation = (markDown: string) => {
-//   return `mutation {
-//     publishPost(input: {
-//       title: "react-daraja 0.2.1"
-//       subtitle: "better folder structure and created a next js docs app"
-//       contentMarkdown: ${JSON.stringify(markDown)}
-//       publishedAt: ${new Date().toISOString()}
-//       coverImageOptions: {
-//         coverImageURL: "https://github.com/amosmachora/react-daraja/raw/main/public/full-logo.png",
-//         coverImageAttribution: "RD Logo"
-//       }
-//       tags: [
-//         { id: ${uid(8)}, name: "React Daraja" },
-//         { id: ${uid(8)}, name: "Safaricom API" }
-//       ]
-//       metaTags: {
-//         title: "react-daraja 0.2.1"
-//         description: "better folder structure and created a next js docs app"
-//         image: "https://github.com/amosmachora/react-daraja/raw/main/public/full-logo.png"
-//       }
-//     }) {
-//       post {
-//         id
-//         title
-//         subtitle
-//         publishedAt
-//       }
-//     }
-//   }
-//   `;
-// };
+const getMarkdownContent = async (filePath: string): Promise<string> => {
+  try {
+    const content = await fs.readFile(filePath, "utf-8");
+    return content;
+  } catch (error) {
+    const err = error as Error;
+    console.error("Error reading file:", err.message);
 
-// const postBlogToHashnode = async (): Promise<any> => {
-//   const BLOG = await getMarkdownContent("./hashnode/BLOG.MD");
-//   const CHANGELOG = await getMarkdownContent("CHANGELOG.md");
+    throw err;
+  }
+};
 
-//   if (BLOG) {
-//     const response = await axios.post(
-//       "https://gql.hashnode.com/",
-//       {
-//         query: createPostMutation(BLOG + CHANGELOG),
-//       },
-//       {
-//         headers: {
-//           Authorization: process.env.HASHNODE_PERSONAL_ACCESS_TOKEN,
-//         },
-//       }
-//     );
+const createPostMutation = (markDown: string, publicationId: string) => {
+  return `mutation {
+    publishPost(input: {
+      title: ${projectName}
+      subtitle: ${subtitle}
+      publicationId: ${publicationId}
+      contentMarkdown: ${JSON.stringify(markDown)}
+      publishedAt: ${new Date().toISOString()}
+      coverImageOptions: {
+        coverImageURL: ${coverImageURL},
+      }
+      tags: [
+        { id: ${uid(8)}, name: ${projectName} },
+        { id: ${uid(8)}, name: ${projectName} Project Releases }
+      ]
+      metaTags: {
+        title: ${projectName}
+        description: ${subtitle}
+        image: ${coverImageURL}
+      }
+    }) {
+      post {
+        id
+        title
+        subtitle
+        publishedAt
+      }
+    }
+  }
+  `;
+};
 
-//     if (response.data.errors || response.data.errors.length > 0) {
-//       throw new Error(response.data.errors.at(0).message);
-//     }
-//     return response.data.data;
-//   }
+const postBlogToHashnode = async (): Promise<any> => {
+  let article = "";
 
-//   console.log(BLOG);
-// };
+  const BLOG = await getMarkdownContent(".hashnode/BLOG.MD");
+  article += BLOG;
 
-// postBlogToHashnode();
+  try {
+    const CHANGELOG = await getMarkdownContent("CHANGELOG.md");
+    article += CHANGELOG;
+  } catch (error) {
+    console.warn(
+      "CHANGELOG.md was not found. It wont be included in your blog"
+    );
+  }
 
-console.log("nigga what");
+  const publicationId = await getPublicationId();
+
+  console.log(
+    `Publishing on ${hashnodeHost} with publicationId ${publicationId}..`
+  );
+
+  console.log(article);
+
+  console.log({ subtitle, coverImageURL });
+
+  // if (BLOG) {
+  //   const response = await axios.post(
+  //     "https://gql.hashnode.com/",
+  //     {
+  //       query: createPostMutation(article, publicationId),
+  //     },
+  //     {
+  //       headers: {
+  //         Authorization: process.env.HASHNODE_PERSONAL_ACCESS_TOKEN,
+  //       },
+  //     }
+  //   );
+
+  //   if (response.data.errors || response.data.errors.length > 0) {
+  //     throw new Error(response.data.errors.at(0).message);
+  //   }
+  //   return response.data.data;
+  // }
+};
+
+postBlogToHashnode();
