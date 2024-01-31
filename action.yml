@@ -1,5 +1,5 @@
 name: "release-auto-blogger"
-description: "A GitHub action to deploy blogs automatically to hashnode"
+description: "A github action to deploy blogs automatically to hashnode"
 
 inputs:
   project-name:
@@ -16,24 +16,7 @@ inputs:
   cover-image:
     description: "A cover image url for the blog"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Run main script
-        run: node dist/index.js
+runs:
+  using: "node20"
+  pre: npm install
+  main: "dist/index.js"
