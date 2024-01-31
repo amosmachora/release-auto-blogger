@@ -14,10 +14,11 @@ inputs:
     description: "Subtitle for your blogs"
 
   cover-image:
-    description: "Subtitle for the blog"
+    description: "A cover image url for the blog"
 
 runs:
   using: "node20"
+  main: "dist/index.js"
   steps:
     - name: Checkout repository
       uses: actions/checkout@v3
