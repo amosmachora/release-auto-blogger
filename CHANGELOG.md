@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.13
+
+### Patch Changes
+
+- 4c82d60: going back to pnpm
+
 ## 0.1.12
 
 ### Patch Changes
