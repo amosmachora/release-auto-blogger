@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.5
+
+### Patch Changes
+
+- 440cf94: fixed action.yml casing error
+
 ## 0.1.4
 
 ### Patch Changes
