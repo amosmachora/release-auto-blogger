@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.9
+
+### Patch Changes
+
+- 3879413: updated action.yml main file
+
 ## 0.1.8
 
 ### Patch Changes
