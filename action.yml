@@ -18,5 +18,16 @@ inputs:
 
 runs:
   using: "node20"
-  pre: pnpm install --frozen-lockfile
-  main: "dist/index.js"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Run main script
+      run: node dist/index.js
