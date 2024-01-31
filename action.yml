@@ -17,29 +17,5 @@ inputs:
     description: "A cover image url for the blog"
 
 runs:
-  using: "composite"
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20.x
-
-    - uses: pnpm/action-setup@v2
-      with:
-        version: 8
-
-    - name: Install dependencies
-      run: pnpm install --frozen-lockfile
-      shell: bash
-
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-
-    - name: Run main script
-      run: |
-        cd $GITHUB_PATH   
-        node dist/index.js
-      shell: bash
+  using: "node20"
+  main: "dist/index.js"

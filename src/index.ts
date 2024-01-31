@@ -1,4 +1,3 @@
-import axios from "axios";
 import dotenv from "dotenv";
 import fs from "fs/promises";
 import { uid } from "uid";
