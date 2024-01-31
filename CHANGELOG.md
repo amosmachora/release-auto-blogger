@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.16
+
+### Patch Changes
+
+- cdbb0dd: removed pwd and checked in to github action
+
 ## 0.1.15
 
 ### Patch Changes
