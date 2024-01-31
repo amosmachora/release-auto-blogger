@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.12
+
+### Patch Changes
+
+- 04dd4a9: refactored action.yml
+
 ## 0.1.11
 
 ### Patch Changes
