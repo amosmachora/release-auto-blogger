@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.3
+
+### Patch Changes
+
+- d2a4777: added dist/index.js
+
 ## 0.1.2
 
 ### Patch Changes
