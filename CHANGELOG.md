@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.18
+
+### Patch Changes
+
+- 1c255ea: rebuilt dist folder
+
 ## 0.1.17
 
 ### Patch Changes
