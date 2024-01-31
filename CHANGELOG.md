@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.15
+
+### Patch Changes
+
+- 75f35a1: changed path
+
 ## 0.1.14
 
 ### Patch Changes
