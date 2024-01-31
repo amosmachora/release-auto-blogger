@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.4
+
+### Patch Changes
+
+- 297e9a2: testing out action changes
+
 ## 0.1.3
 
 ### Patch Changes
