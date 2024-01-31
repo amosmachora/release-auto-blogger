@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.14
+
+### Patch Changes
+
+- ecd76d6: removed main from action.yml
+
 ## 0.1.13
 
 ### Patch Changes
