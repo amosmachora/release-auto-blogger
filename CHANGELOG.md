@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.11
+
+### Patch Changes
+
+- 3e96e2a: running npm install as pre tag
+
 ## 0.1.10
 
 ### Patch Changes
