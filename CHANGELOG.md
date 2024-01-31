@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.17
+
+### Patch Changes
+
+- b1399ed: opted out of axios
+
 ## 0.1.16
 
 ### Patch Changes
