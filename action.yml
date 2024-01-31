@@ -18,6 +18,7 @@ inputs:
 
 runs:
   using: "node20"
+  shell: bash
   steps:
     - name: Checkout repository
       uses: actions/checkout@v3
