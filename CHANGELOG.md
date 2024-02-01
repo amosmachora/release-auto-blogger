@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.23
+
+### Patch Changes
+
+- e779de4: added shell to action.yml
+
 ## 0.1.22
 
 ### Patch Changes
