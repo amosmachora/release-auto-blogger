@@ -1,11 +1,7 @@
-import dotenv from "dotenv";
 import fs from "fs/promises";
 import { uid } from "uid";
-import core from "@actions/core";
 import { getPublicationId } from "./publications";
 import { subtitle, coverImageURL, projectName, hashnodeHost } from "./config";
-
-dotenv.config();
 
 const getMarkdownContent = async (filePath: string): Promise<string> => {
   try {

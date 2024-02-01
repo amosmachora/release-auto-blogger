@@ -1,11 +1,9 @@
-var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
-var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __knownSymbol = (name, symbol) => {
@@ -62,14 +60,6 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-  mod
-));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
@@ -19298,22 +19288,20 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
 });
 
 // src/config.ts
-var import_core, projectName, hashnodeHost, subtitle, coverImageURL;
+var core, projectName, hashnodeHost, subtitle, coverImageURL;
 var init_config = __esm({
   "src/config.ts"() {
-    import_core = __toESM(require_core());
-    projectName = import_core.default.getInput("project-name");
-    hashnodeHost = import_core.default.getInput("hashnode-host");
-    subtitle = import_core.default.getInput("subtitle");
-    coverImageURL = import_core.default.getInput("cover-image");
+    core = require_core();
+    projectName = core.getInput("project-name");
+    hashnodeHost = core.getInput("hashnode-host");
+    subtitle = core.getInput("subtitle");
+    coverImageURL = core.getInput("cover-image");
   }
 });
 
 export {
-  __require,
   __esm,
   __commonJS,
-  __toESM,
   __async,
   projectName,
   hashnodeHost,

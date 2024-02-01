@@ -3,7 +3,7 @@ import {
   __esm,
   hashnodeHost,
   init_config
-} from "./chunk-ZVTG5VLS.mjs";
+} from "./chunk-S6SOEN4Y.mjs";
 
 // src/publications.ts
 import axios from "axios";
@@ -11,9 +11,8 @@ var optimisticPublicationQuery, getPublicationId;
 var init_publications = __esm({
   "src/publications.ts"() {
     init_config();
-    console.log(hashnodeHost);
     optimisticPublicationQuery = `query {
-  publication(host: "amosmachora.hashnode.dev") {
+  publication(host: "${hashnodeHost}") {
     id
     title
   }

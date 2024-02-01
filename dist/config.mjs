@@ -4,7 +4,7 @@ import {
   init_config,
   projectName,
   subtitle
-} from "./chunk-H44BPO5A.mjs";
+} from "./chunk-S6SOEN4Y.mjs";
 init_config();
 export {
   coverImageURL,
