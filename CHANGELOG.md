@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.22
+
+### Patch Changes
+
+- f470cf5: back to composites
+
 ## 0.1.21
 
 ### Patch Changes

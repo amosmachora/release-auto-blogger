@@ -1,6 +1,6 @@
 {
   "name": "release-auto-blogger",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "A github action to deploy blogs automatically to hashnode",
   "main": "dist/index.js",
   "modules": "dist/index.mjs",
