@@ -17,18 +17,8 @@ inputs:
     description: "A cover image url for the blog"
 
 runs:
-  using: "composite"
-  steps:
-    - name: Set up pnpm action 8
-      uses: pnpm/action-setup@v2
-      with:
-        version: 8
-
-    - run: pnpm install --frozen-lockfile
-      shell: bash
-
-    - run: node dist/index.js
-      shell: bash
+  using: "node20"
+  main: "dist/index.js"
 
 branding:
   icon: "book"
