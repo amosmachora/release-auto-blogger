@@ -19,5 +19,7 @@ jobs:
           subtitle: "Release Blog"
           hashnode-host: amosmachora.hashnode.dev
           cover-image: https://github.com/amosmachora/react-daraja/raw/main/public/full-logo.png
+          blog-only: true
+          files: "fileA.md,fileB.md"
         env:
           HASHNODE_TOKEN: ${{ secrets.HASHNODE_PERSONAL_ACCESS_TOKEN }}

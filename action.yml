@@ -48,6 +48,8 @@ runs:
         HASHNODE_HOST: ${{ inputs.hashnode-host }}
         SUBTITLE: ${{ inputs.subtitle }}
         COVER_IMAGE: ${{ inputs.cover-image }}
+        BLOG_ONLY: ${{ inputs.blog-only }}
+        FILES: ${{ inputs.files }}
         GITHUB_WORKSPACE: ${{ github.workspace }}
 
 branding:

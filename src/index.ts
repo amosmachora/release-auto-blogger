@@ -69,15 +69,20 @@ const postBlogToHashnode = async (): Promise<any> => {
     );
   }
 
+  try {
+    const README = await getMarkdownContent(`${userWorkspace}/README.md`);
+    article += README;
+  } catch (error) {
+    console.warn("README.md was not found. It wont be included in your blog");
+  }
+
   const publicationId = await getPublicationId();
 
   console.log(
     `Publishing on ${hashnodeHost} with publicationId ${publicationId}..`
   );
 
-  console.log(process.env.HASHNODE_TOKEN);
-
-  // if (BLOG) {
+  // if (article.length > 100) {
   //   const response = await axios.post(
   //     "https://gql.hashnode.com/",
   //     {

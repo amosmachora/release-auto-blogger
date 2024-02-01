@@ -13,8 +13,6 @@ export const getPublicationId = async () => {
     query: optimisticPublicationQuery,
   });
 
-  console.log(response.data);
-
   // Check if the user has a publication
   if (response.data.data.publication && response.data.data.publication.id) {
     return response.data.data.publication.id;
