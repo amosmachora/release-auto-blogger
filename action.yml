@@ -23,6 +23,7 @@ runs:
       shell: bash
 
     - run: node dist/index.js
+      shell: bash
 
 branding:
   icon: "book"
