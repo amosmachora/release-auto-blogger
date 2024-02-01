@@ -43,6 +43,11 @@ runs:
     - run: node dist/index.js
       shell: bash
       working-directory: ${{ github.action_path }}
+      env:
+        PROJECT_NAME: ${{ inputs.project-name }}
+        HASHNODE_HOST: ${{ inputs.hashnode-host }}
+        SUBTITLE: ${{ inputs.subtitle }}
+        COVER_IMAGE: ${{ inputs.cover-image }}
 
 branding:
   icon: "book"
