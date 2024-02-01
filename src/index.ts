@@ -1,7 +1,13 @@
 import fs from "fs/promises";
 import { uid } from "uid";
 import { getPublicationId } from "./publications";
-import { subtitle, coverImageURL, projectName, hashnodeHost } from "./config";
+import {
+  subtitle,
+  coverImageURL,
+  projectName,
+  hashnodeHost,
+  userWorkspace,
+} from "./config";
 
 const getMarkdownContent = async (filePath: string): Promise<string> => {
   try {
@@ -50,11 +56,11 @@ const createPostMutation = (markDown: string, publicationId: string) => {
 const postBlogToHashnode = async (): Promise<any> => {
   let article = "";
 
-  const BLOG = await getMarkdownContent(".hashnode/BLOG.md");
+  const BLOG = await getMarkdownContent(`${userWorkspace}/.hashnode/BLOG.md`);
   article += BLOG;
 
   try {
-    const CHANGELOG = await getMarkdownContent("CHANGELOG.md");
+    const CHANGELOG = await getMarkdownContent(`${userWorkspace}/CHANGELOG.md`);
     article += CHANGELOG;
   } catch (error) {
     console.warn(
