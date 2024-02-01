@@ -28,7 +28,7 @@ runs:
       run: pnpm install --frozen-lockfile
       shell: bash
 
-  main: "dist/index.js"
+    - run: node dist/index.js
 
 branding:
   icon: "book"
