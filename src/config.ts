@@ -9,3 +9,5 @@ export const coverImageURL = core.getInput("cover-image");
 // export const hashnodeHost = "amosmachora.hashnode.dev";
 // export const subtitle = "sub";
 // export const coverImageURL = "some uri";
+
+console.log(process.env.PROJECT_NAME, "project-name");
