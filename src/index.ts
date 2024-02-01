@@ -8,6 +8,7 @@ import {
   hashnodeHost,
   userWorkspace,
 } from "./config";
+import axios from "axios";
 
 const getMarkdownContent = async (filePath: string): Promise<string> => {
   try {
@@ -74,9 +75,7 @@ const postBlogToHashnode = async (): Promise<any> => {
     `Publishing on ${hashnodeHost} with publicationId ${publicationId}..`
   );
 
-  console.log(article);
-
-  console.log({ subtitle, coverImageURL });
+  console.log(process.env.HASHNODE_TOKEN);
 
   // if (BLOG) {
   //   const response = await axios.post(
@@ -86,7 +85,7 @@ const postBlogToHashnode = async (): Promise<any> => {
   //     },
   //     {
   //       headers: {
-  //         Authorization: process.env.HASHNODE_PERSONAL_ACCESS_TOKEN,
+  //         Authorization: process.env.HASHNODE_TOKEN,
   //       },
   //     }
   //   );
