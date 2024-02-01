@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.21
+
+### Patch Changes
+
+- 4ed4235: installed form-data library
+
 ## 0.1.20
 
 ### Patch Changes
