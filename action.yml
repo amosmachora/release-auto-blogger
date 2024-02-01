@@ -19,6 +19,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Checkout Action Repo
+      uses: actions/checkout@v3
+      with:
+        repository: amosmachora/release-auto-blogger
+        ref: main
+
     - name: Set up pnpm action 8
       uses: pnpm/action-setup@v2
       with:
