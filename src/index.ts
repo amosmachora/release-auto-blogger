@@ -50,7 +50,7 @@ const createPostMutation = (markDown: string, publicationId: string) => {
 const postBlogToHashnode = async (): Promise<any> => {
   let article = "";
 
-  const BLOG = await getMarkdownContent(".hashnode/BLOG.MD");
+  const BLOG = await getMarkdownContent(".hashnode/BLOG.md");
   article += BLOG;
 
   try {
