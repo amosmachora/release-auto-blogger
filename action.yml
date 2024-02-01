@@ -17,8 +17,14 @@ inputs:
     description: "A cover image url for the blog"
 
 runs:
-  using: "node20"
-  main: "dist/index.js"
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - run: npm install
+    - run: node dist/index.js
 
 branding:
   icon: "book"
