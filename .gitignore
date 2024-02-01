@@ -1,6 +1,2 @@
-.pnpm/
-@changesets/
-prettier
-tsup
-.bin
+node_modules/
 .env
