@@ -1,4 +1,5 @@
-import { hashnodeHost } from ".";
+import axios from "axios";
+import { hashnodeHost } from "./config";
 
 const optimisticPublicationQuery = `query {
   publication(host: "${hashnodeHost}") {
@@ -8,25 +9,17 @@ const optimisticPublicationQuery = `query {
 }`;
 
 export const getPublicationId = async () => {
-  // Make a POST request using fetch
-  const response = await fetch("https://gql.hashnode.com/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: optimisticPublicationQuery,
+  const response = await axios.post("https://gql.hashnode.com/", {
+    query: optimisticPublicationQuery,
   });
 
-  if (response.ok) {
-    const responseData = await response.json();
+  console.log(response.data);
 
-    // Check if the user has a publication
-    if (responseData.data.publication && responseData.data.publication.id) {
-      return responseData.data.publication.id;
-    }
+  // Check if the user has a publication
+  if (response.data.data.publication && response.data.data.publication.id) {
+    return response.data.data.publication.id;
   }
 
-  // Doesn't have a publication, throw an error
   throw new Error(
     "You don't have a publication under that host. Create a Hashnode host then rerun workflow"
   );
