@@ -103,3 +103,12 @@ const postBlogToHashnode = async (): Promise<any> => {
 };
 
 postBlogToHashnode();
+
+// {
+//   projectName: 'React Daraja',
+//   hashnodeHost: 'amosmachora.hashnode.dev',
+//   subtitle: 'Release Blog',
+//   coverImageURL: 'https://github.com/amosmachora/react-daraja/raw/main/public/full-logo.png',
+//   blogOnly: 'true',
+//   files: 'fileA.md,fileB.md'
+// }
