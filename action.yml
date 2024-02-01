@@ -48,6 +48,7 @@ runs:
         HASHNODE_HOST: ${{ inputs.hashnode-host }}
         SUBTITLE: ${{ inputs.subtitle }}
         COVER_IMAGE: ${{ inputs.cover-image }}
+        GITHUB_WORKSPACE: ${{ github.workspace }}
 
 branding:
   icon: "book"
