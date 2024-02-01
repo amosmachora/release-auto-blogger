@@ -16,6 +16,12 @@ inputs:
   cover-image:
     description: "A cover image url for the blog"
 
+  files:
+    description: "any other mark down files you might want included in your blog"
+
+  blog-only:
+    description: "set to true if you want to only publish the blog.md file inside your .hashnode folder"
+
 runs:
   using: "composite"
   steps:

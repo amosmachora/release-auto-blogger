@@ -40,9 +40,9 @@ You need your **HASHNODE_PERSONAL_ACCESS_TOKEN** that you can find by going to h
 
 Make sure you reference it in your github action like in the example above.
 
-## Guide
+## GUIDE
 
-The action works best if you include a file blog.md in a folder at the root of your repo called `.hashnode`. This way you can write your blog right from vscode and have it published on git commit.
+The action works best if you include a file `BLOG.md` in a folder at the root of your repo called `.hashnode`. This way you can write your blog right from vscode and have it published on git commit.
 
 However if you don't want to bother yourself you can live it at that.
 
@@ -54,9 +54,9 @@ example
   files: "fileA.md, fileB.md"
 ```
 
-If you want to opt out of that functionality set the `blog-only` field to true. This will only publish your blog.md file.
+If you want to opt out of that functionality set the `blog-only` field to true. This will only publish your `BLOG.md` file.
 
-There are only two required fields. 1. project-name 2. hashnode-host the rest are for customization to make look things better and granular
+There are only two required fields. 1. `project-name` 2. `hashnode-host` the rest are for customization to make look things better and granular.
 
 ## Support
 
