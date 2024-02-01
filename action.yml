@@ -18,6 +18,7 @@ inputs:
 
 runs:
   using: "node20"
+  pre: "npm install"
   main: "dist/index.js"
 
 branding:
