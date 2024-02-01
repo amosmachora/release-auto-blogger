@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.19
+
+### Patch Changes
+
+- c54a234: pushed node modules to github
+
 ## 0.1.18
 
 ### Patch Changes
