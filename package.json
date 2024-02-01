@@ -35,6 +35,7 @@
     "uid": "^2.0.2"
   },
   "dependencies": {
-    "@types/node": "^20.11.10"
+    "@types/node": "^20.11.10",
+    "axios": "^1.6.7"
   }
 }
