@@ -1,0 +1,21 @@
+# name: "test"
+
+# on:
+#   push:
+#     branches:
+#       - "test"
+
+# jobs:
+#   publish:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repo
+#         uses: actions/checkout@v3
+
+#       - name: test
+#         uses: ./
+#         with:
+#           project-name: "React Daraja"
+#           subtitle: "Release Blog"
+#           hashnode-host: amosmachora.hashnode.dev
+#           cover-image: https://github.com/amosmachora/react-daraja/raw/main/public/full-logo.png

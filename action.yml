@@ -17,8 +17,32 @@ inputs:
     description: "A cover image url for the blog"
 
 runs:
-  using: "node20"
-  main: "dist/index.js"
+  using: "composite"
+  steps:
+    - name: Set up pnpm action 8
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+
+    - name: Set up Node 20
+      uses: actions/setup-node@v3
+      with:
+        cache: "pnpm"
+        node-version: 20
+
+    - name: Install Dependencies
+      run: pnpm install --frozen-lockfile
+      shell: bash
+      working-directory: ${{ github.action_path }}
+
+    - name: build
+      run: pnpm run build
+      shell: bash
+      working-directory: ${{ github.action_path }}
+
+    - run: node dist/index.js
+      shell: bash
+      working-directory: ${{ github.action_path }}
 
 branding:
   icon: "book"
