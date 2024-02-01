@@ -13862,7 +13862,7 @@ var require_fetch = __commonJS({
         this.emit("terminated", error);
       }
     };
-    function fetch2(input, init = {}) {
+    function fetch(input, init = {}) {
       var _a, _b;
       webidl.argumentLengthCheck(arguments, 1, { header: "globalThis.fetch" });
       const p = createDeferredPromise();
@@ -14832,7 +14832,7 @@ var require_fetch = __commonJS({
       });
     }
     module2.exports = {
-      fetch: fetch2,
+      fetch,
       Fetch,
       fetching,
       finalizeAndReportTiming
@@ -18167,7 +18167,7 @@ var require_undici = __commonJS({
     module2.exports.getGlobalDispatcher = getGlobalDispatcher;
     if (util.nodeMajor > 16 || util.nodeMajor === 16 && util.nodeMinor >= 8) {
       let fetchImpl = null;
-      module2.exports.fetch = function fetch2(_0) {
+      module2.exports.fetch = function fetch(_0) {
         return __async(this, arguments, function* (resource) {
           if (!fetchImpl) {
             fetchImpl = require_fetch().fetch;
@@ -19624,12 +19624,6 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
 });
 
 // src/index.ts
-var src_exports = {};
-__export(src_exports, {
-  hashnodeHost: () => hashnodeHost,
-  projectName: () => projectName
-});
-module.exports = __toCommonJS(src_exports);
 var import_dotenv = __toESM(require_main());
 var import_promises = __toESM(require("fs/promises"));
 
@@ -19639,8 +19633,15 @@ var HEX = [];
 while (IDX--)
   HEX[IDX] = (IDX + 256).toString(16).substring(1);
 
-// src/index.ts
-var import_core = __toESM(require_core());
+// src/publications.ts
+var import_axios = __toESM(require("axios"));
+
+// src/config.ts
+var core = require_core();
+var projectName = core.getInput("project-name");
+var hashnodeHost = core.getInput("hashnode-host");
+var subtitle = core.getInput("subtitle");
+var coverImageURL = core.getInput("cover-image");
 
 // src/publications.ts
 var optimisticPublicationQuery = `query {
@@ -19650,18 +19651,12 @@ var optimisticPublicationQuery = `query {
   }
 }`;
 var getPublicationId = () => __async(void 0, null, function* () {
-  const response = yield fetch("https://gql.hashnode.com/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: optimisticPublicationQuery
+  const response = yield import_axios.default.post("https://gql.hashnode.com/", {
+    query: optimisticPublicationQuery
   });
-  if (response.ok) {
-    const responseData = yield response.json();
-    if (responseData.data.publication && responseData.data.publication.id) {
-      return responseData.data.publication.id;
-    }
+  console.log(response.data);
+  if (response.data.data.publication && response.data.data.publication.id) {
+    return response.data.data.publication.id;
   }
   throw new Error(
     "You don't have a publication under that host. Create a Hashnode host then rerun workflow"
@@ -19670,11 +19665,7 @@ var getPublicationId = () => __async(void 0, null, function* () {
 
 // src/index.ts
 import_dotenv.default.config();
-var projectName = import_core.default.getInput("project-name");
-var hashnodeHost = import_core.default.getInput("hashnode-host");
-var subtitle = import_core.default.getInput("subtitle");
-var coverImageURL = import_core.default.getInput("cover-image");
-var getMarkdownContent = (filePath) => __async(void 0, null, function* () {
+var getMarkdownContent = (filePath) => __async(exports, null, function* () {
   try {
     const content = yield import_promises.default.readFile(filePath, "utf-8");
     return content;
@@ -19684,7 +19675,7 @@ var getMarkdownContent = (filePath) => __async(void 0, null, function* () {
     throw err;
   }
 });
-var postBlogToHashnode = () => __async(void 0, null, function* () {
+var postBlogToHashnode = () => __async(exports, null, function* () {
   let article = "";
   const BLOG = yield getMarkdownContent(".hashnode/BLOG.MD");
   article += BLOG;
@@ -19704,11 +19695,6 @@ var postBlogToHashnode = () => __async(void 0, null, function* () {
   console.log({ subtitle, coverImageURL });
 });
 postBlogToHashnode();
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  hashnodeHost,
-  projectName
-});
 /*! Bundled license information:
 
 undici/lib/fetch/body.js:

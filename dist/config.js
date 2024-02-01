@@ -19291,43 +19291,26 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
   }
 });
 
-// src/publications.ts
-var publications_exports = {};
-__export(publications_exports, {
-  getPublicationId: () => getPublicationId
-});
-module.exports = __toCommonJS(publications_exports);
-var import_axios = __toESM(require("axios"));
-
 // src/config.ts
+var config_exports = {};
+__export(config_exports, {
+  coverImageURL: () => coverImageURL,
+  hashnodeHost: () => hashnodeHost,
+  projectName: () => projectName,
+  subtitle: () => subtitle
+});
+module.exports = __toCommonJS(config_exports);
 var core = require_core();
 var projectName = core.getInput("project-name");
 var hashnodeHost = core.getInput("hashnode-host");
 var subtitle = core.getInput("subtitle");
 var coverImageURL = core.getInput("cover-image");
-
-// src/publications.ts
-var optimisticPublicationQuery = `query {
-  publication(host: "${hashnodeHost}") {
-    id
-    title
-  }
-}`;
-var getPublicationId = () => __async(void 0, null, function* () {
-  const response = yield import_axios.default.post("https://gql.hashnode.com/", {
-    query: optimisticPublicationQuery
-  });
-  console.log(response.data);
-  if (response.data.data.publication && response.data.data.publication.id) {
-    return response.data.data.publication.id;
-  }
-  throw new Error(
-    "You don't have a publication under that host. Create a Hashnode host then rerun workflow"
-  );
-});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  getPublicationId
+  coverImageURL,
+  hashnodeHost,
+  projectName,
+  subtitle
 });
 /*! Bundled license information:
 
