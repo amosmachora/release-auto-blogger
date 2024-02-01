@@ -1,5 +1,11 @@
 # release-auto-blogger
 
+## 0.1.20
+
+### Patch Changes
+
+- 4832e2e: fixed more bugs
+
 ## 0.1.19
 
 ### Patch Changes
