@@ -12,15 +12,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Set up pnpm action 8
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
       - name: Set up Node 20
         uses: actions/setup-node@v3
         with:
-          cache: "pnpm"
           node-version: 20
 
       - name: test
@@ -30,3 +24,4 @@ jobs:
           subtitle: "Release Blog"
           hashnode-host: amosmachora.hashnode.dev
           cover-image: https://github.com/amosmachora/react-daraja/raw/main/public/full-logo.png
+          repository: ${{ github.repository }}
