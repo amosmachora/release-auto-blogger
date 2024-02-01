@@ -19,16 +19,16 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Set up pnpm action 8
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+
     - name: Set up Node 20
       uses: actions/setup-node@v3
       with:
         cache: "pnpm"
         node-version: 20
-
-    - name: Set up pnpm action 8
-      uses: pnpm/action-setup@v2
-      with:
-        version: 8
 
     - name: Install Dependencies
       run: pnpm install --frozen-lockfile
