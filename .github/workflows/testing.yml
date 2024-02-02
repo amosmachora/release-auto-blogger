@@ -1,24 +1,24 @@
-name: "test"
+# name: "test"
 
-on:
-  push:
-    branches:
-      - "test"
+# on:
+#   push:
+#     branches:
+#       - "test"
 
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+# jobs:
+#   publish:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repo
+#         uses: actions/checkout@v3
 
-      - name: test
-        uses: ./
-        with:
-          project-name: "A Github Action to automatically build and publish blogs on any github event."
-          subtitle: "How i did it, when i did it and why i did it."
-          hashnode-host: amosmachora.hashnode.dev
-          # cover-image: https://media.discordapp.net/attachments/1008571040097632317/1202880290368913459/toshi0210_58640_Paintshop_H_logo_H_LOGO_Windows_Vista_style_Kaz_67f808b4-87c6-435a-bccd-d34925b1c205.png?ex=65cf1091&is=65bc9b91&hm=47bc9c81333674d7a03dd218268100124be68b3096eba25da64bf46d26529906&=&format=webp&quality=lossless&width=483&height=498
-          tags: "apihackathon"
-        env:
-          HASHNODE_TOKEN: ${{ secrets.HASHNODE_PERSONAL_ACCESS_TOKEN }}
+#       - name: test
+#         uses: ./
+#         with:
+#           project-name: "A Github Action to automatically build and publish blogs on any github event."
+#           subtitle: "How i did it, when i did it and why i did it."
+#           hashnode-host: amosmachora.hashnode.dev
+#           # cover-image: https://media.discordapp.net/attachments/1008571040097632317/1202880290368913459/toshi0210_58640_Paintshop_H_logo_H_LOGO_Windows_Vista_style_Kaz_67f808b4-87c6-435a-bccd-d34925b1c205.png?ex=65cf1091&is=65bc9b91&hm=47bc9c81333674d7a03dd218268100124be68b3096eba25da64bf46d26529906&=&format=webp&quality=lossless&width=483&height=498
+#           tags: "apihackathon"
+#         env:
+#           HASHNODE_TOKEN: ${{ secrets.HASHNODE_PERSONAL_ACCESS_TOKEN }}
