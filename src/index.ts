@@ -26,6 +26,8 @@ const postRequest = async (article: string) => {
       }
     );
 
+    console.log(JSON.stringify(response.data.data));
+
     if (response.data.data.publishPost.post.id) {
       console.log("Your article has been published.");
     }
