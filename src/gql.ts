@@ -89,6 +89,8 @@ export const getTagData = async (tag: string) => {
   }
 `;
 
+  console.log(query);
+
   const response = await axios.post(
     "https://gql.hashnode.com/",
     {
