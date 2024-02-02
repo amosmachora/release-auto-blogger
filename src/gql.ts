@@ -6,14 +6,12 @@ import {
   tags,
 } from "./config";
 import axios from "axios";
+import gel, { gql } from "graphql-tag";
 
 export const createPostMutation = async (
   markDown: string,
   publicationId: string
 ) => {
-  const escapedMarkdown = markDown.replace(/"/g, "'");
-  const cleaned = escapedMarkdown.replace(/"/g, "'");
-
   const tagsArray = tags!.split(",");
   const validTags: { tag: string; id: string }[] = [];
 
@@ -40,12 +38,12 @@ export const createPostMutation = async (
     .map((tagData) => `{ id: "${tagData.id}", name: "${tagData.tag}" }`)
     .join(", ");
 
-  return `mutation {
+  return gql`mutation {
     publishPost(input: {
       title: "${projectName}"
       subtitle: "${subtitle}"
       publicationId: "${publicationId}"
-      contentMarkdown: "${cleaned}"
+      contentMarkdown: "${markDown}"
       publishedAt: "${new Date().toISOString()}"
       coverImageOptions: {
         coverImageURL: "${coverImageURL}"
