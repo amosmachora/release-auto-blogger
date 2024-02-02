@@ -6,12 +6,12 @@ import {
   tags,
 } from "./config";
 import axios from "axios";
-import gel, { gql } from "graphql-tag";
+import { gql } from "graphql-tag";
 
 export const createPostMutation = async (
   markDown: string,
   publicationId: string
-) => {
+): Promise<ReturnType<typeof gql>> => {
   const tagsArray = tags!.split(",");
   const validTags: { tag: string; id: string }[] = [];
 
@@ -30,7 +30,7 @@ export const createPostMutation = async (
 
   if (validTags.length === 0) {
     throw new Error(
-      "couldn't find any tag info for the passed in tags. Make sure its valid. Try tweaking the casing"
+      "couldn't find any tag info for the passed-in tags. Make sure it's valid. Try tweaking the casing"
     );
   }
 
@@ -38,7 +38,7 @@ export const createPostMutation = async (
     .map((tagData) => `{ id: "${tagData.id}", name: "${tagData.tag}" }`)
     .join(", ");
 
-  const mutationQuery = gql`mutation {
+  const mutation = gql`mutation {
     publishPost(input: {
       title: "${projectName}"
       subtitle: "${subtitle}"
@@ -62,10 +62,9 @@ export const createPostMutation = async (
         publishedAt
       }
     }
-  }
-`;
+  }`;
 
-  return mutationQuery;
+  return mutation;
 };
 
 export const optimisticPublicationQuery = `query {
