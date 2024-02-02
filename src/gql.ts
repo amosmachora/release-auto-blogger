@@ -6,12 +6,12 @@ import {
   tags,
 } from "./config";
 import axios from "axios";
-import { gql } from "graphql-tag";
+// import { gql } from "graphql-tag";
 
 export const createPostMutation = async (
   markDown: string,
   publicationId: string
-): Promise<ReturnType<typeof gql>> => {
+): Promise<string> => {
   const tagsArray = tags!.split(",");
   const validTags: { tag: string; id: string }[] = [];
 
@@ -38,13 +38,13 @@ export const createPostMutation = async (
     .map((tagData) => `{ id: "${tagData.id}", name: "${tagData.tag}" }`)
     .join(", ");
 
-  const mutation = gql`
+  const mutation = `
     mutation {
       publishPost(input: {
         title: "${projectName}"
         subtitle: "${subtitle}"
         publicationId: "${publicationId}"
-        contentMarkdown: "${JSON.stringify(markDown)}"
+        contentMarkdown: "${JSON.stringify(markDown.replace(/"/g, "'"))}"
         publishedAt: "${new Date().toISOString()}"
         coverImageOptions: {
           coverImageURL: "${coverImageURL}"
