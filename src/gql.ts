@@ -38,31 +38,33 @@ export const createPostMutation = async (
     .map((tagData) => `{ id: "${tagData.id}", name: "${tagData.tag}" }`)
     .join(", ");
 
-  const mutation = gql`mutation {
-    publishPost(input: {
-      title: "${projectName}"
-      subtitle: "${subtitle}"
-      publicationId: "${publicationId}"
-      contentMarkdown: "${markDown}"
-      publishedAt: "${new Date().toISOString()}"
-      coverImageOptions: {
-        coverImageURL: "${coverImageURL}"
-      }
-      tags: [${tagsSection}]
-      metaTags: {
-        title: "${projectName}"
-        description: "${subtitle}"
-        image: "${coverImageURL}"
-      }
-    }) {
-      post {
-        id
-        title
-        subtitle
-        publishedAt
+  const mutation = gql`
+    mutation {
+      publishPost(input: {
+        title: ${projectName}
+        subtitle: ${subtitle}
+        publicationId: ${publicationId}
+        contentMarkdown: ${JSON.stringify(markDown)}
+        publishedAt: ${new Date().toISOString()}
+        coverImageOptions: {
+          coverImageURL: ${coverImageURL}
+        }
+        tags: [${tagsSection}]
+        metaTags: {
+          title: ${projectName}
+          description: ${subtitle}
+          image: ${coverImageURL}
+        }
+      }) {
+        post {
+          id
+          title
+          subtitle
+          publishedAt
+        }
       }
     }
-  }`;
+  `;
 
   return mutation;
 };
