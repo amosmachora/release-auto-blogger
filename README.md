@@ -57,7 +57,13 @@ example
   files: "fileA.md,fileB.md"
 ```
 
-There are only two required fields. 1. `project-name` 2. `hashnode-host` the rest are for customization to make look things better and granular.
+There are only 3 required fields. 1. `project-name` 2. `hashnode-host` 3. `tags` the rest are for customization to make look things better and granular.
+
+For tags. Supply at-least one tag in a comma separated string. A valid tag will be used to publish your blog. If no tag is found your blog won`t be published.
+
+```
+  files: "taga,tagb"
+```
 
 ## Support
 

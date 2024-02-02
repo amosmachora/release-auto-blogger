@@ -1,8 +1,44 @@
-import { ObjectId } from "bson";
-import { projectName, subtitle, coverImageURL, hashnodeHost } from "./config";
+import {
+  projectName,
+  subtitle,
+  coverImageURL,
+  hashnodeHost,
+  tags,
+} from "./config";
+import axios from "axios";
 
-export const createPostMutation = (markDown: string, publicationId: string) => {
+export const createPostMutation = async (
+  markDown: string,
+  publicationId: string
+) => {
   const escapedMarkdown = encodeURIComponent(markDown.replace(/"/g, '\\"'));
+
+  const tagsArray = tags!.split(",");
+
+  const validTags: { tag: string; id: string }[] = [];
+
+  for (let i = 0; i < tagsArray.length; i++) {
+    const tag = tagsArray[i];
+
+    const tagData = await getTagData(tag);
+    if (tagData) {
+      validTags.push(tagData);
+    }
+
+    if (tagData === null) {
+      console.error(`Couldn't find tag data for ${tag}`);
+    }
+  }
+
+  if (validTags.length === 0) {
+    throw new Error(
+      "couldn't find any tag info for the passed in tags. Make sure its valid. Try tweaking the casing"
+    );
+  }
+
+  const tagsSection = validTags
+    .map((tagData) => `{ id: "${tagData.id}", name: "${tagData.tag}" }`)
+    .join(", ");
 
   return `mutation {
       publishPost(input: {
@@ -14,11 +50,7 @@ export const createPostMutation = (markDown: string, publicationId: string) => {
         coverImageOptions: {
           coverImageURL: "${coverImageURL}"
         }
-        tags: [
-          { id: "${new ObjectId().toString()}", name: "${projectName}" },
-          { id: "${new ObjectId().toString()}", name: "${projectName} Project Releases" },
-          { id: "${new ObjectId().toString()}", name: "#APIHackathon" }
-        ]
+        tags: [${tagsSection}]
         metaTags: {
           title: "${projectName}"
           description: "${subtitle}"
@@ -42,3 +74,39 @@ export const optimisticPublicationQuery = `query {
       title
     }
   }`;
+
+export const getTagData = async (tag: string) => {
+  const query = `query {
+    tag(slug: "${tag}") {
+      id
+    }
+  }
+`;
+
+  const response = await axios.post(
+    "https://gql.hashnode.com/",
+    {
+      query,
+    },
+    {
+      headers: {
+        Authorization: process.env.HASHNODE_TOKEN,
+      },
+    }
+  );
+
+  if (response.data.data.tag.id) {
+    return {
+      tag: tag,
+      id: response.data.data.tag.id,
+    };
+  }
+
+  if (response.data.tag === null) {
+    return null;
+  }
+
+  if (response.data.errors || response.data.errors.length > 0) {
+    throw new Error(response.data.errors.at(0).message);
+  }
+};

@@ -5,6 +5,7 @@ export const coverImageURL = process.env.COVER_IMAGE;
 export const userWorkspace = process.env.GITHUB_WORKSPACE;
 export const blogOnly = process.env.BLOG_ONLY;
 export const files = process.env.FILES;
+export const tags = process.env.TAGS;
 
 console.log({
   projectName,
@@ -13,4 +14,5 @@ console.log({
   coverImageURL,
   blogOnly,
   files,
+  tags,
 });

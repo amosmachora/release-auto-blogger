@@ -10,6 +10,10 @@ inputs:
     description: "The hashnode host e.g amosmachora.hashnode.dev"
     required: true
 
+  tags:
+    description: "at least one valid hashnode tag"
+    required: true
+
   subtitle:
     description: "Subtitle for your blogs"
 
@@ -57,6 +61,7 @@ runs:
         BLOG_ONLY: ${{ inputs.blog-only }}
         FILES: ${{ inputs.files }}
         GITHUB_WORKSPACE: ${{ github.workspace }}
+        TAGS: ${{ inputs.tags }}
 
 branding:
   icon: "book"

@@ -26,11 +26,11 @@ const postRequest = async (article: string) => {
 
     console.log(response.data);
 
-    // if (response.data.data.post.id) {
-    //   console.log("Your article has been published.");
-    // }
+    if (response.data.data.post.id) {
+      console.log("Your article has been published.");
+    }
 
-    if (response.data.data.errors || response.data.data.errors.length > 0) {
+    if (response.data.errors || response.data.errors.length > 0) {
       throw new Error(response.data.errors.at(0).message);
     }
     return response.data.data;
