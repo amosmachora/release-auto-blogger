@@ -1,4 +1,4 @@
-# release-auto-blogger CHANGELOG
+# release-auto-blogger
 
 ## 0.1.23
 

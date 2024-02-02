@@ -45,16 +45,17 @@ Make sure you reference it in your github action like in the example above.
 The action works best if you include a file `BLOG.md` in a folder at the root of your repo called `.hashnode`. This way you can write your blog right from vscode and have it published on git commit.
 
 However if you don't want to bother yourself you can live it at that.
+The action will automatically pick up your `README.md` , your `CHANGELOG.md` and your `RELEASE-NOTES.md`.
 
-The action will automatically pick up your `Readme` , your `Changelog` and your `Release Notes`, If you want to pass in any other extra file include it in a comma separated field called `files` and they will be used to construct your blog.
+If you want to opt out of that functionality set the `blog-only` field to true. This will only publish your `BLOG.md` file.
+
+If you want to explicitly define the files to be included, include them in a comma separated field called `files` and they will be used to construct your blog. **no spaces**
 
 example
 
 ```
-  files: "fileA.md, fileB.md"
+  files: "fileA.md,fileB.md"
 ```
-
-If you want to opt out of that functionality set the `blog-only` field to true. This will only publish your `BLOG.md` file.
 
 There are only two required fields. 1. `project-name` 2. `hashnode-host` the rest are for customization to make look things better and granular.
 

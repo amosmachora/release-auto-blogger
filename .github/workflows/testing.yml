@@ -15,11 +15,9 @@ jobs:
       - name: test
         uses: ./
         with:
-          project-name: "React Daraja"
-          subtitle: "Release Blog"
+          project-name: "My API Hackathon Submission"
+          subtitle: "How i did it, when i did it and why i did it."
           hashnode-host: amosmachora.hashnode.dev
           cover-image: https://github.com/amosmachora/react-daraja/raw/main/public/full-logo.png
-          blog-only: true
-          files: "fileA.md,fileB.md"
         env:
           HASHNODE_TOKEN: ${{ secrets.HASHNODE_PERSONAL_ACCESS_TOKEN }}
