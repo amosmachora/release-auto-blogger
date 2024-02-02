@@ -11,8 +11,8 @@ export const createPostMutation = async (
   markDown: string,
   publicationId: string
 ) => {
-  const escapedMarkdown = markDown.replace(/"/g, "&quot;");
-  const escapedHTMLAttributes = escapedMarkdown.replace(/"/g, "&quot;");
+  const escapedMarkdown = markDown.replace(/"/g, "'");
+  const escapedHTMLAttributes = escapedMarkdown.replace(/"/g, "'");
 
   console.log(escapedHTMLAttributes);
 
