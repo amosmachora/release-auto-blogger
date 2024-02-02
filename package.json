@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@types/node": "^20.11.10",
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "bson": "^6.3.0"
   }
 }

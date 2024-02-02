@@ -1,4 +1,4 @@
-import { uid } from "uid";
+import { ObjectId } from "bson";
 import { projectName, subtitle, coverImageURL, hashnodeHost } from "./config";
 
 export const createPostMutation = (markDown: string, publicationId: string) => {
@@ -15,9 +15,9 @@ export const createPostMutation = (markDown: string, publicationId: string) => {
           coverImageURL: "${coverImageURL}"
         }
         tags: [
-          { id: "${uid(5)}", name: "${projectName}" },
-          { id: "${uid(5)}", name: "${projectName} Project Releases" },
-          { id: "${uid(5)}", name: "#APIHackathon" }
+          { id: "${new ObjectId().toString()}", name: "${projectName}" },
+          { id: "${new ObjectId().toString()}", name: "${projectName} Project Releases" },
+          { id: "${new ObjectId().toString()}", name: "#APIHackathon" }
         ]
         metaTags: {
           title: "${projectName}"

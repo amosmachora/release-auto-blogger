@@ -1,6 +1,6 @@
 WELL. After 3 days of endless headaches, 50+ failed Github action runs, unnecessary releases i am finally ready to make my submission. This blog is going to be a walk through of ideation, process and working of my project submission and most importantly of all, the lessons learnt.
 
-![some image i downloaded from discord](./toshi0210_58640_Paintshop_H_logo_H_LOGO_Windows_Vista_style_Kaz_dcd1e773-0ece-4916-967d-8a6c357a5605.png)
+![HERO](./toshi0210_58640_Paintshop_H_logo_H_LOGO_Windows_Vista_style_Kaz_dcd1e773-0ece-4916-967d-8a6c357a5605.png)
 
 ## Ideation
 
@@ -46,7 +46,7 @@ Nothing worked brothers. I kept running into all sorts of module not found error
 
 I later came to find out that `pnpm install` installs the dependencies of the checked out repo not your stupid action.
 
-Anyway. At some point i even pushed node_modules to github. I felt bad to be honest. Its really easy for me to feel guilty by temparament but i had to do it. I infact still have an open question on [github discussions](https://github.com/orgs/community/discussions/102976#discussioncomment-8337833) asking how to install modules. Some guy actually says its okay to push node_modules to github but i still feel cringe. actually that approach doesnt work anyway. I kept running into dependencies of dependecnies not being available on the pushed node-modules.
+Anyway. At some point i even pushed node_modules to github. I felt bad to be honest. Its really easy for me to feel guilty by temparament but i had to do it. I infact still have an open question on [github discussions](https://github.com/orgs/community/discussions/102976#discussioncomment-8337833) asking how to install modules. Some guy actually says its okay to push node_modules to github but i still feel cringe. actually that approach doesnt work anyway. I kept running into dependencies of dependencies not being available on the pushed node-modules.
 
 I abandoned the idea and decided to research like an engineer and stop taking shortcuts. Turns out there is a `composite action` which i still don't fully understand but it kind of helps you define steps that will run before executing your action. And you can even define the directory on which the step will run. Damn! Newver have i ever loved a green checkmark more. My action runs for the first time. Orgasms.
 
@@ -67,5 +67,7 @@ Well the project is not perfect. Im very sure there are bugs to be caught and er
 - **chatGPT is most helpful when you know wtf you are doing**. Cant save you if you know nothing. It will actually help you tie your feet and hands together.
 
 - **Don't test your work on submission deadline**.
+
+The source code of this action can be found on this [repo.](https://github.com/amosmachora/release-auto-blogger).
 
 ### THA NEEEIIM - action.YAMOL AGEN.
