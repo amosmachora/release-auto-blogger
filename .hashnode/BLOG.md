@@ -1,6 +1,8 @@
 WELL. After 3 days of endless headaches, 50+ failed Github action runs, unnecessary releases i am finally ready to make my submission. This blog is going to be a walk through of ideation, process and working of my project submission and most importantly of all, the lessons learnt.
 
-![HERO](./toshi0210_58640_Paintshop_H_logo_H_LOGO_Windows_Vista_style_Kaz_dcd1e773-0ece-4916-967d-8a6c357a5605.png)
+<div style="max-height: 25vw; overflow: hidden;">
+  <img src="https://media.discordapp.net/attachments/1008571040097632317/1202880290368913459/toshi0210_58640_Paintshop_H_logo_H_LOGO_Windows_Vista_style_Kaz_67f808b4-87c6-435a-bccd-d34925b1c205.png?ex=65cf1091&is=65bc9b91&hm=47bc9c81333674d7a03dd218268100124be68b3096eba25da64bf46d26529906&=&format=webp&quality=lossless&width=483&height=498" alt="HERO" style="width: 100%; object-fit: cover;">
+</div>
 
 ## Ideation
 
