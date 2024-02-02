@@ -11,7 +11,10 @@ export const createPostMutation = async (
   markDown: string,
   publicationId: string
 ) => {
-  console.log(markDown);
+  const escapedMarkdown = markDown.replace(/"/g, '\\"');
+  const escapedHTMLAttributes = escapedMarkdown.replace(/"/g, '\\"');
+
+  console.log(escapedHTMLAttributes);
 
   const tagsArray = tags!.split(",");
   const validTags: { tag: string; id: string }[] = [];
