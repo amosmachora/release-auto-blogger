@@ -41,19 +41,19 @@ export const createPostMutation = async (
   const mutation = gql`
     mutation {
       publishPost(input: {
-        title: ${projectName}
-        subtitle: ${subtitle}
-        publicationId: ${publicationId}
-        contentMarkdown: ${JSON.stringify(markDown)}
-        publishedAt: ${new Date().toISOString()}
+        title: "${projectName}"
+        subtitle: "${subtitle}"
+        publicationId: "${publicationId}"
+        contentMarkdown: "${JSON.stringify(markDown)}"
+        publishedAt: "${new Date().toISOString()}"
         coverImageOptions: {
-          coverImageURL: ${coverImageURL}
+          coverImageURL: "${coverImageURL}"
         }
         tags: [${tagsSection}]
         metaTags: {
-          title: ${projectName}
-          description: ${subtitle}
-          image: ${coverImageURL}
+          title: "${projectName}"
+          description: "${subtitle}"
+          image: "${coverImageURL}"
         }
       }) {
         post {
