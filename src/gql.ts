@@ -12,9 +12,7 @@ export const createPostMutation = async (
   publicationId: string
 ) => {
   const escapedMarkdown = markDown.replace(/"/g, "'");
-  const escapedHTMLAttributes = escapedMarkdown.replace(/"/g, "'");
-
-  console.log(escapedHTMLAttributes);
+  const cleaned = escapedMarkdown.replace(/"/g, "'");
 
   const tagsArray = tags!.split(",");
   const validTags: { tag: string; id: string }[] = [];
@@ -47,7 +45,7 @@ export const createPostMutation = async (
       title: "${projectName}"
       subtitle: "${subtitle}"
       publicationId: "${publicationId}"
-      contentMarkdown: "${markDown}"
+      contentMarkdown: "${cleaned}"
       publishedAt: "${new Date().toISOString()}"
       coverImageOptions: {
         coverImageURL: "${coverImageURL}"
