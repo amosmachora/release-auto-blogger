@@ -25,9 +25,11 @@ jobs:
         uses: amosmachora/release-auto-blogger@v0.1.25
         with:
           project-name: "React Daraja"
-          subtitle: "Release Blog"
+          subtitle: "Release Blog" ##optional
           hashnode-host: amosmachora.hashnode.dev
-          cover-image: https://github.com/amosmachora/react-daraja/raw/main/public/full-logo.png
+          cover-image: https://github.com/amosmachora/react-daraja/raw/main/public/full-logo.png ##optional
+          files: "fileA.md,fileB.md" ## optional
+          tags: "taga,tagb" ## at least one required
         env:
           HASHNODE_TOKEN: ${{ secrets.HASHNODE_PERSONAL_ACCESS_TOKEN }}
 ```
@@ -62,7 +64,7 @@ There are only 3 required fields. 1. `project-name` 2. `hashnode-host` 3. `tags`
 For tags. Supply at-least one tag in a comma separated string. A valid tag will be used to publish your blog. If no tag is found your blog won`t be published.
 
 ```
-  files: "taga,tagb"
+  tags: "taga,tagb"
 ```
 
 ## Support
