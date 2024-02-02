@@ -101,6 +101,8 @@ export const getTagData = async (tag: string) => {
     }
   );
 
+  console.log(response);
+
   if (
     response.data.data &&
     response.data.data.tag &&
