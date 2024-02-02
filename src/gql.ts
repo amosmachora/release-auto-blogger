@@ -38,7 +38,7 @@ export const createPostMutation = async (
     .map((tagData) => `{ id: "${tagData.id}", name: "${tagData.tag}" }`)
     .join(", ");
 
-  return gql`mutation {
+  const mutationQuery = gql`mutation {
     publishPost(input: {
       title: "${projectName}"
       subtitle: "${subtitle}"
@@ -64,6 +64,8 @@ export const createPostMutation = async (
     }
   }
 `;
+
+  return mutationQuery;
 };
 
 export const optimisticPublicationQuery = `query {
