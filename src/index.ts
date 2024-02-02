@@ -11,11 +11,13 @@ const postRequest = async (article: string) => {
     `Publishing on ${hashnodeHost} with publicationId ${publicationId}..`
   );
 
+  const mutation = await createPostMutation(article, publicationId);
+
   if (article.length > 100) {
     const response = await axios.post(
       "https://gql.hashnode.com/",
       {
-        query: createPostMutation(article, publicationId),
+        query: mutation,
       },
       {
         headers: {

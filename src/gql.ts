@@ -82,19 +82,17 @@ export const optimisticPublicationQuery = `query {
   }`;
 
 export const getTagData = async (tag: string) => {
-  const query = `query {
+  const myQuery = `query {
     tag(slug: "${tag}") {
       id
     }
   }
 `;
 
-  console.log(query);
-
   const response = await axios.post(
     "https://gql.hashnode.com/",
     {
-      query,
+      query: myQuery,
     },
     {
       headers: {
