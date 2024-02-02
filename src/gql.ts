@@ -44,7 +44,7 @@ export const createPostMutation = async (
         title: "${projectName}"
         subtitle: "${subtitle}"
         publicationId: "${publicationId}"
-        contentMarkdown: "${JSON.stringify(markDown.replace(/"/g, "'"))}"
+        contentMarkdown: ${JSON.stringify(markDown.replace(/"/g, "'"))}
         publishedAt: "${new Date().toISOString()}"
         coverImageOptions: {
           coverImageURL: "${coverImageURL}"
