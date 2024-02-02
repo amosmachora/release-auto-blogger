@@ -10,11 +10,21 @@ inputs:
     description: "The hashnode host e.g amosmachora.hashnode.dev"
     required: true
 
+  tags:
+    description: "at least one valid hashnode tag"
+    required: true
+
   subtitle:
     description: "Subtitle for your blogs"
 
   cover-image:
     description: "A cover image url for the blog"
+
+  files:
+    description: "any other mark down files you might want included in your blog"
+
+  blog-only:
+    description: "set to true if you want to only publish the blog.md file inside your .hashnode folder"
 
 runs:
   using: "composite"
@@ -43,6 +53,15 @@ runs:
     - run: node dist/index.js
       shell: bash
       working-directory: ${{ github.action_path }}
+      env:
+        PROJECT_NAME: ${{ inputs.project-name }}
+        HASHNODE_HOST: ${{ inputs.hashnode-host }}
+        SUBTITLE: ${{ inputs.subtitle }}
+        COVER_IMAGE: ${{ inputs.cover-image }}
+        BLOG_ONLY: ${{ inputs.blog-only }}
+        FILES: ${{ inputs.files }}
+        GITHUB_WORKSPACE: ${{ github.workspace }}
+        TAGS: ${{ inputs.tags }}
 
 branding:
   icon: "book"
