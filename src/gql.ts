@@ -13,10 +13,9 @@ export const createPostMutation = async (
 ) => {
   const escapedMarkdown = encodeURIComponent(markDown.replace(/"/g, '\\"'));
 
+  console.log(escapedMarkdown);
+
   const tagsArray = tags!.split(",");
-
-  console.log(tagsArray);
-
   const validTags: { tag: string; id: string }[] = [];
 
   for (let i = 0; i < tagsArray.length; i++) {
@@ -38,13 +37,9 @@ export const createPostMutation = async (
     );
   }
 
-  console.log(validTags);
-
   const tagsSection = validTags
     .map((tagData) => `{ id: "${tagData.id}", name: "${tagData.tag}" }`)
     .join(", ");
-
-  console.log(tagsSection);
 
   return `mutation {
     publishPost(input: {
@@ -100,8 +95,6 @@ export const getTagData = async (tag: string) => {
       },
     }
   );
-
-  console.log(response);
 
   if (
     response.data.data &&
