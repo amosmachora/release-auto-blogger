@@ -40,32 +40,34 @@ export const createPostMutation = async (
     .map((tagData) => `{ id: "${tagData.id}", name: "${tagData.tag}" }`)
     .join(", ");
 
+  console.log(tagsSection);
+
   return `mutation {
-      publishPost(input: {
+    publishPost(input: {
+      title: "${projectName}"
+      subtitle: "${subtitle}"
+      publicationId: "${publicationId}"
+      contentMarkdown: "${escapedMarkdown}"
+      publishedAt: "${new Date().toISOString()}"
+      coverImageOptions: {
+        coverImageURL: "${coverImageURL}"
+      }
+      tags: [${tagsSection}]
+      metaTags: {
         title: "${projectName}"
-        subtitle: "${subtitle}"
-        publicationId: "${publicationId}"
-        contentMarkdown: "${escapedMarkdown}"
-        publishedAt: "${new Date().toISOString()}"
-        coverImageOptions: {
-          coverImageURL: "${coverImageURL}"
-        }
-        tags: [${tagsSection}]
-        metaTags: {
-          title: "${projectName}"
-          description: "${subtitle}"
-          image: "${coverImageURL}"
-        }
-      }) {
-        post {
-          id
-          title
-          subtitle
-          publishedAt
-        }
+        description: "${subtitle}"
+        image: "${coverImageURL}"
+      }
+    }) {
+      post {
+        id
+        title
+        subtitle
+        publishedAt
       }
     }
-  `;
+  }
+`;
 };
 
 export const optimisticPublicationQuery = `query {
