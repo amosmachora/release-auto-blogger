@@ -15,6 +15,8 @@ export const createPostMutation = async (
 
   const tagsArray = tags!.split(",");
 
+  console.log(tagsArray);
+
   const validTags: { tag: string; id: string }[] = [];
 
   for (let i = 0; i < tagsArray.length; i++) {
@@ -35,6 +37,8 @@ export const createPostMutation = async (
       "couldn't find any tag info for the passed in tags. Make sure its valid. Try tweaking the casing"
     );
   }
+
+  console.log(validTags);
 
   const tagsSection = validTags
     .map((tagData) => `{ id: "${tagData.id}", name: "${tagData.tag}" }`)
@@ -97,18 +101,22 @@ export const getTagData = async (tag: string) => {
     }
   );
 
-  if (response.data.data.tag.id) {
+  if (
+    response.data.data &&
+    response.data.data.tag &&
+    response.data.data.tag.id
+  ) {
     return {
       tag: tag,
       id: response.data.data.tag.id,
     };
   }
 
-  if (response.data.tag === null) {
+  if (response.data.data && response.data.data.tag === null) {
     return null;
   }
 
-  if (response.data.errors || response.data.errors.length > 0) {
-    throw new Error(response.data.errors.at(0).message);
+  if (response.data.errors && response.data.errors.length > 0) {
+    throw new Error(response.data.errors[0].message);
   }
 };
